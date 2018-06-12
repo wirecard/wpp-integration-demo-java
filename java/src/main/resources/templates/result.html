@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${status}"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<div class="container" style="margin-top: 2%">
+
+    <div class="row">
+        <div class="col-12">
+            <h3 style="text-align: center"><strong th:text="${msg}"/></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h4><strong>responseSignatureBase64:</strong></h4>
+            <pre th:text="${responseSignatureBase64}"/>
+            <h4><strong>responseSignatureAlgorithm:</strong></h4>
+            <pre th:text="${responseSignatureAlgorithm}"/>
+            <h4><strong>responseBase64:</strong></h4>
+            <pre th:text="${responseBase64}"/>
+            <h4><strong>decodedResponseBase64:</strong></h4>
+            <pre th:text="${decodedResponseBase64}"/>
+            <h4><strong>validSignature:</strong></h4>
+            <pre th:text="${validSignature}"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
