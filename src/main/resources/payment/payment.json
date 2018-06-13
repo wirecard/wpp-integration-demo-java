@@ -1,0 +1,22 @@
+{
+  "payment":{
+    "merchant-account-id":{
+      "value":""
+    },
+    "request-id": "",
+    "transaction-type":"auto-sale",
+    "requested-amount":{
+      "value":10,
+      "currency":"EUR"
+    },
+    "payment-methods":{
+      "payment-method":[]
+    },
+    "success-redirect-url": "http://localhost:8080/success",
+    "fail-redirect-url": "http://localhost:8080/fail",
+    "cancel-redirect-url": "http://localhost:8080/cancel"
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}

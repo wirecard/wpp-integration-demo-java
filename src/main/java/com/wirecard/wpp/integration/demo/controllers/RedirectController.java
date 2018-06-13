@@ -22,7 +22,7 @@ public class RedirectController {
     private static final String FAIL = "/fail";
     private static final String CANCEL = "/cancel";
 
-    @Value("${wpp.maid.secretkey}")
+    @Value("${ee.secretkey}")
     private String merchantSecretKey;
 
     @RequestMapping(value = SUCCESS, method = RequestMethod.POST)
