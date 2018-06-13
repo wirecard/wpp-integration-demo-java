@@ -25,7 +25,6 @@ var clientApi = {
                 }
             })
         };
-        var self = this;
         // set payment method
         data["payment-method"] = "creditcard"
         getRedirectUrlToWpp(JSON.stringify(data), function (resp) {

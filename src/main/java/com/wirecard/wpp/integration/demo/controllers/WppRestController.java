@@ -8,7 +8,6 @@ import org.springframework.http.*;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -21,8 +20,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 
 @RestController
 public class WppRestController {
@@ -30,7 +27,6 @@ public class WppRestController {
     private final String base64Credentials;
 
     private final String REGISTER = "/api/register";
-    private final String LOADER = "/api/wpp-loader-js-url";
     private final String SEAMLESS = "seamless";
     private final String EMBEDDED = "wpp-embedded";
 
