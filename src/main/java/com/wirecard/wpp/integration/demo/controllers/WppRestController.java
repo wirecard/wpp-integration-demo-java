@@ -52,11 +52,11 @@ public class WppRestController {
                     .getJSONObject("payment-methods")
                     .getJSONArray("payment-method").put(new JSONObject("{name:" + paymentMethod+ "}"));
 
-            if (SEAMLESS.equals(mode) || EMBEDDED.equals(mode)){
-                json.getJSONObject("options").put("mode", mode);
+            if (mode !=null && mode.contains(SEAMLESS)){
+                json.getJSONObject("options").put("mode", SEAMLESS);
             }
             // frame-ancestor must be set for SEAMLESS mode and EMBEDDED integration
-            if (!"".equals(mode) && null != mode){
+            if (null != mode && (mode.contains(SEAMLESS) || mode.contains(EMBEDDED))){
                 json.getJSONObject("options").put("frame-ancestor", frameAncestor);
             }
             return json;
