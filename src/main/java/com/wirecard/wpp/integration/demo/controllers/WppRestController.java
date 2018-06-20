@@ -26,9 +26,9 @@ public class WppRestController {
 
     private final String base64Credentials;
 
-    private final String REGISTER = "/api/register";
-    private final String SEAMLESS = "seamless";
-    private final String EMBEDDED = "wpp-embedded";
+    private static final String REGISTER = "/api/register";
+    private static final String SEAMLESS = "seamless";
+    private static final String EMBEDDED = "wpp-embedded";
 
     @Value("${wpp.register.endpoint}")
     private String wppRegisterEndpoint;
@@ -42,7 +42,7 @@ public class WppRestController {
     private JSONObject getPaymentModel(String mode, String paymentMethod) {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            String payment = IOUtils.toString(classLoader.getResourceAsStream("payment" + File.separator +"payment.json"));
+            String payment = IOUtils.toString(classLoader.getResourceAsStream("payment" + File.separator + "payment.json"));
 
             JSONObject json = new JSONObject(payment);
 
@@ -50,13 +50,13 @@ public class WppRestController {
             json.getJSONObject("payment").getJSONObject("merchant-account-id").put("value", this.maid);
             json.getJSONObject("payment")
                     .getJSONObject("payment-methods")
-                    .getJSONArray("payment-method").put(new JSONObject("{name:" + paymentMethod+ "}"));
+                    .getJSONArray("payment-method").put(new JSONObject("{name:" + paymentMethod + "}"));
 
-            if (mode !=null && mode.contains(SEAMLESS)){
+            if (mode != null && mode.contains(SEAMLESS)) {
                 json.getJSONObject("options").put("mode", SEAMLESS);
             }
             // frame-ancestor must be set for SEAMLESS mode and EMBEDDED integration
-            if (null != mode && (mode.contains(SEAMLESS) || mode.contains(EMBEDDED))){
+            if (null != mode && (mode.contains(SEAMLESS) || mode.contains(EMBEDDED))) {
                 json.getJSONObject("options").put("frame-ancestor", frameAncestor);
             }
             return json;
@@ -66,7 +66,7 @@ public class WppRestController {
         return null;
     }
 
-    public WppRestController(@Value("${ee.username}") String username, @Value("${ee.password}") String password){
+    public WppRestController(@Value("${ee.username}") String username, @Value("${ee.password}") String password) {
         this.base64Credentials = Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
 
     }
@@ -80,7 +80,7 @@ public class WppRestController {
             String jsonRaw = StreamUtils.copyToString(request.getInputStream(), StandardCharsets.UTF_8);
             JSONObject req = new JSONObject(jsonRaw);
             // only for demo - payment model for request
-            JSONObject json=getPaymentModel(req.get("mode").toString(), req.get("payment-method").toString());
+            JSONObject json = getPaymentModel(req.get("mode").toString(), req.get("payment-method").toString());
             // post request to wpp with Basic authorization - register payment and get URL to WPP
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

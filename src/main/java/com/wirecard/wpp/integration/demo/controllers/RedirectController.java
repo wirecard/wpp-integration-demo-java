@@ -29,21 +29,21 @@ public class RedirectController {
     public ModelAndView success(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
                 .addObject("msg", "Transaction was success")
-                .addObject("status","Success");
+                .addObject("status", "Success");
     }
 
     @RequestMapping(value = FAIL, method = RequestMethod.POST)
     private ModelAndView fail(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
                 .addObject("msg", "Transaction failed")
-                .addObject("status","Fail");
+                .addObject("status", "Fail");
     }
 
     @RequestMapping(value = CANCEL, method = RequestMethod.POST)
     private ModelAndView cancel(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
                 .addObject("msg", "Transaction was canceled")
-                .addObject("status","Cancel");
+                .addObject("status", "Cancel");
     }
 
     private ModelAndView prepareDataForView(HttpServletRequest request) throws Exception {
@@ -68,6 +68,7 @@ public class RedirectController {
     private boolean isValidSignature(String responseBase64, String responseBase64Signature, String responseSignatureAlgorithm) throws Exception {
         Mac mac = Mac.getInstance(responseSignatureAlgorithm);
         mac.init(new SecretKeySpec(merchantSecretKey.getBytes("UTF-8"), responseSignatureAlgorithm));
-        return responseBase64Signature != null && responseBase64Signature.equals(DatatypeConverter.printBase64Binary(mac.doFinal(responseBase64.getBytes("UTF-8"))));
+        return responseBase64Signature != null && responseBase64Signature
+                .equals(DatatypeConverter.printBase64Binary(mac.doFinal(responseBase64.getBytes("UTF-8"))));
     }
 }

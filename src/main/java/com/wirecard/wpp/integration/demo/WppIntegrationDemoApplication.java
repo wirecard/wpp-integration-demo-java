@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WppIntegrationDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WppIntegrationDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WppIntegrationDemoApplication.class, args);
+    }
 }
