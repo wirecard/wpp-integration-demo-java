@@ -1,6 +1,6 @@
-# WPP Integration demo
+# Wirecard Payment Page (WPP) Integration demo
 
-This a sample integration of WPP into your e-shop via JSON in Java. 
+This is a sample integration of WPP into your e-shop using Java. 
 
 ## Requirements
 
@@ -13,19 +13,19 @@ This a sample integration of WPP into your e-shop via JSON in Java.
 #eshop backend app port
 server.port=8080
 
-#elactic engine username
+#payment gateway username (api username)
 ee.username=70000-APIDEMO-CARD
 
-#elactic engine password
+#payment gateway password (api password)
 ee.password=ohysS0-dvfMx
 
-#wirecard payment page merchant id
+#wirecard payment page merchant-id
 ee.maid=7a6dd74f-06ab-4f3f-a864-adc52687270a
 
 #wirecard payment page merchant secret key
 ee.secretkey=a8c3fce6-8df7-4fd6-a1fd-62fa229c5e55
 
-#rest service endpoint for register payment
+#rest service endpoint for registering payment (initial requests)
 wpp.register.endpoint=https://wpp-test.wirecard.com/api/payment/register
 
 #origin location for SEAMLESS mode and EMBEDDED integration
@@ -33,6 +33,8 @@ frame.ancestor=http://localhost:${server.port}
 ```
 
 ## Payment model
+
+All requests/responses use the JSON format.
 
 ```
 {
