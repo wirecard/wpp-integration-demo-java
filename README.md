@@ -1,7 +1,7 @@
 # Wirecard Payment Page (WPP) Integration demo
 
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/wirecard/wpp-integration-demo-java/master/LICENSE)
-[![JDK v1.8](https://img.shields.io/badge/Java-v1.8-orange.svg)](http://www.java.com/)
+[![JDK v1.8](https://img.shields.io/badge/JDK-v1.8-orange.svg)](http://www.java.com/)
 [![Wirecard Company](https://img.shields.io/badge/Wirecard-Company-blue.svg)](https://www.wirecard.com/)
 
 This is a sample integration of WPP into your e-shop using Java. 
