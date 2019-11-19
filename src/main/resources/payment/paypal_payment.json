@@ -1,0 +1,39 @@
+{
+  "payment":{
+    "merchant-account-id":{
+      "value":""
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "request-id": "",
+    "transaction-type":"auto-sale",
+    "requested-amount":{
+      "value":10,
+      "currency":"EUR"
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "paypal"
+        }
+      ]
+    },
+    "success-redirect-url": "http://localhost:8080/success",
+    "fail-redirect-url": "http://localhost:8080/fail",
+    "cancel-redirect-url": "http://localhost:8080/cancel",
+    "notifications": {
+      "format": "application/json",
+      "notification": [
+        {
+          "transaction-state": "success",
+          "url": "http://06fbafcd.ngrok.io/notifications"
+        }
+      ]
+    }
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}

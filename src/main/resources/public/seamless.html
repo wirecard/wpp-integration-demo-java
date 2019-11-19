@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wirecard Payment Page Integration Demo</title>
+
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type=text/javascript src="static/js/integration.js"></script>
+<script type=text/javascript src="https://wpp-test.wirecard.com/loader/paymentPage.js"></script>
+
+
+<body>
+
+<script type="text/javascript">
+    $('document').ready(function(){
+        clientApi.pay('wpp-seamless-render')
+    });
+</script>
+
+<div class="container">
+    <h1 class="text-center">Wirecard Payment Page Integration Demo - <br>
+        Seamless Credit Card</h1>
+
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+
+        <div class="panel-heading">
+            Seamless mode
+        </div>
+
+        <div class="panel-body" style="padding: 0px">
+
+            <div class="row">
+                <div class="col-8">
+                    <div style="height: 80vh; text-align:center">
+                        <div id="seamless-form-target" style="height: 50%; padding: 20px;"/>
+                    </div>
+                    <div class="col-4 text-center">
+                        <button id="submit" style="display: none" type="button" class=" btn btn-primary"
+                                onclick="clientApi.pay('wpp-seamless-submit')">SEAMLESS SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <a href="index.html">back</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

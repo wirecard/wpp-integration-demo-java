@@ -3,6 +3,8 @@ package com.wirecard.wpp.integration.demo.controllers;
 
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.util.StreamUtils;
@@ -39,21 +41,22 @@ public class WppRestController {
     @Value("${frame.ancestor}")
     private String frameAncestor;
 
+    private final Logger log = LoggerFactory.getLogger(WppRestController.class);
+
     private JSONObject getPaymentModel(String mode, String paymentMethod) {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            String payment = IOUtils.toString(classLoader.getResourceAsStream("payment" + File.separator + "payment.json"));
+            String payment = IOUtils.toString(classLoader.getResourceAsStream("payment" + File.separator +  paymentMethod + "_payment.json"));
 
             JSONObject json = new JSONObject(payment);
 
-            json.getJSONObject("payment").put("request-id",  UUID.randomUUID());
+            String requestId = UUID.randomUUID().toString();
+            json.getJSONObject("payment").put("request-id", requestId);
+            log.info("Register payment with request-id: {}", requestId);
             json.getJSONObject("payment").getJSONObject("merchant-account-id").put("value", this.maid);
-            json.getJSONObject("payment")
-                    .getJSONObject("payment-methods")
-                    .getJSONArray("payment-method").put(new JSONObject("{name:" + paymentMethod + "}"));
 
             if (mode != null && mode.contains(SEAMLESS)) {
-                json.getJSONObject("options").put("mode", SEAMLESS);
+                json.getJSONObject("options").put("mode", "seamless-no-redirect");
             }
             // frame-ancestor must be set for SEAMLESS mode and EMBEDDED integration
             if (null != mode && (mode.contains(SEAMLESS) || mode.contains(EMBEDDED))) {

@@ -1,0 +1,44 @@
+{
+  "payment":{
+    "merchant-account-id":{
+      "value":""
+    },
+    "request-id": "",
+    "transaction-type":"get-url",
+    "requested-amount":{
+      "value":10,
+      "currency":"EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "order-number": "15684356856",
+    "descriptor": "customer-statement",
+    "bank-account": {
+      "bic": "INGBNL2A"
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "ideal"
+        }
+      ]
+    },
+    "success-redirect-url": "http://localhost:8080/success",
+    "fail-redirect-url": "http://localhost:8080/fail",
+    "cancel-redirect-url": "http://localhost:8080/cancel",
+    "notifications": {
+      "format": "application/json",
+      "notification": [
+        {
+          "transaction-state": "success",
+          "url": "http://your.domain.com/notifications"
+        }
+      ]
+    }
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}

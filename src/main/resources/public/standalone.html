@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wirecard Payment Page Integration Demo</title>
+
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type=text/javascript src="static/js/integration.js"></script>
+<script type=text/javascript src="https://wpp-test.wirecard.com/loader/paymentPage.js"></script>
+
+<body>
+<div class="container">
+
+    <h1 class="text-center">Wirecard Payment Page Integration Demo - <br>
+        Standalone Credit Card and Alternative PaymentMethods</h1>
+
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+
+        <div class="panel-heading">
+            Choose standalone credit card or one of the currently supported alternative payment methods
+        </div>
+
+        <div class="panel-body">
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <div style="padding: 0.5em 2.5em;" class="text-center">
+                    <h2>Credit Card</h2>
+                    <img src="static/images/ccard.png"/>
+                    <p style="margin: 1em 0;">
+                        A standalone payment page hosted independently of your checkout page.
+                    </p>
+                    <div>
+                        <a href="https://document-center.wirecard.com/display/PTD/Credit+Card+with+WPP">
+                            Read more
+                        </a>
+                    </div>
+                    <div style="padding: 1em 3em;">
+                        <a class="btn btn-primary center-block text-center" role="button"
+                           style="display: inline; padding: 0.55em;"
+                           onclick="clientApi.pay('wpp-standalone', 'creditcard')">Register payment</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div style="padding: 0.5em 2.5em;" class="text-center">
+                    <h2>PayPal</h2>
+                    <img src="static/images/paypal.png" alt="payment method PayPal" class="center-block"/>
+                    <p style="margin: 1em 0;">
+                        Payment service PayPal hosted independently of your checkout page.
+                    </p>
+                    <div>
+                        <a href="https://document-center.wirecard.com/display/PTD/PayPal+with+WPP">Read
+                            more</a>
+                    </div>
+                    <div style="padding: 1em 3em;">
+                        <a class="btn btn-primary center-block text-center"
+                           role="button"
+                           onclick="clientApi.pay('wpp-standalone', 'paypal')"
+                           style="display: inline; padding: 0.55em;">Register payment
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div style="padding: 0.5em 2.5em;" class="text-center">
+                    <h2>iDEAL</h2>
+                    <img src="static/images/ideal.png" alt="payment method Ideal" class="center-block"/>
+                    <p style="margin: 1em 0;">
+                        Online payment service Ideal hosted independently of your checkout page.
+                    </p>
+                    <div>
+                        <a href="https://document-center.wirecard.com/display/PTD/iDEAL+with+WPP">
+                            Read more
+                        </a>
+                    </div>
+                    <div style="padding: 1em 3em;">
+                        <a class="btn btn-primary center-block text-center"
+                           role="button"
+                           style="display: inline; padding: 0.55em;"
+                           onclick="clientApi.pay('wpp-standalone', 'ideal')"
+                        >Register payment
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div style="padding: 0.5em 2.5em;" class="text-center">
+                    <h2>Sofort</h2>
+                    <img src="static/images/sofort.png" alt="payment method Sofort" class="center-block"/>
+                    <p style="margin: 1em 0;">
+                        Online payment service Sofort hosted independently of your checkout page.
+                    </p>
+                    <div>
+                        <a href="https://document-center.wirecard.com/display/PTD/Sofort.+with+WPP">
+                            Read more
+                        </a>
+                    </div>
+                    <div style="padding: 1em 3em;">
+                        <a class="btn btn-primary center-block text-center"
+                           role="button"
+                           onclick="clientApi.pay('wpp-standalone', 'sofortbanking')"
+                           style="display: inline; padding: 0.55em;">Register payment
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div style="padding: 0.5em 2.5em;" class="text-center">
+                    <h2>SEPA</h2>
+                    <img src="static/images/sepa.png" alt="payment method Sepa-DD" class="center-block"/>
+                    <p style="margin: 1em 0;">
+                        Sepa Direct Debit hosted independently of your checkout page.
+                    </p>
+                    <div>
+                        <a href="https://document-center.wirecard.com/display/PTD/SEPA+Direct+Debit+with+WPP">
+                            Read more
+                        </a>
+                    </div>
+                    <div style="padding: 1em 3em;">
+                        <a class="btn btn-primary center-block text-center"
+                           role="button"
+                           onclick="clientApi.pay('wpp-standalone', 'sepadirectdebit')"
+                           style="display: inline; padding: 0.55em;">Register payment</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+        <div class="panel-footer">
+            <a href="index.html">back</a>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

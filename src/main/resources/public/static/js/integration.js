@@ -25,8 +25,6 @@ var clientApi = {
                 }
             })
         };
-        // set payment method
-        data["payment-method"] = "creditcard"
         getRedirectUrlToWpp(JSON.stringify(data), function (resp) {
             var respObj = JSON.parse(resp)
             if (respObj['payment-redirect-url']) {
@@ -69,22 +67,20 @@ var clientApi = {
             console.error('Payment registration failed: ' + err.status + ': ' + err.statusText + ' : ' + err.responseText)
         } )
     },
-    pay: function (mode) {
+    pay: function (mode, paymentMethod) {
         switch (mode) {
             case 'wpp-standalone':
-                this.show("submit", false)
-                this.integrateWPP({mode: 'wpp-standalone'})
+                this.integrateWPP({mode: 'wpp-standalone', "payment-method": paymentMethod})
                 break
             case 'wpp-embedded':
-                this.show("submit", false)
-                this.integrateWPP({mode: 'wpp-embedded'})
+                this.integrateWPP({mode: 'wpp-embedded', "payment-method": paymentMethod})
                 break;
             case 'wpp-seamless-render':
                 this.show("submit", true)
-                this.integrateWPP({mode: 'wpp-seamless-render'})
+                this.integrateWPP({mode: 'wpp-seamless-render', "payment-method": "creditcard"})
                 break;
             case 'wpp-seamless-submit':
-                this.integrateWPP({mode: 'wpp-seamless-submit'})
+                this.integrateWPP({mode: 'wpp-seamless-submit', "payment-method": "creditcard"})
                 break;
         }
     }

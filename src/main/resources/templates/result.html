@@ -22,17 +22,28 @@
     </div>
 
     <div class="row">
+        <td th:switch="${status}">
+            <div th:case="'Found'" class="col-12">
+                <h4><strong>Payment:</strong></h4>
+                <pre th:text="${payment}"/>
+            </div>
+            <div th:case="*" class="col-12">
+                <h4 th:if="${responseBase64 != null}"><strong>responseSignatureBase64:</strong></h4>
+                <pre th:if="${responseBase64 != null}" th:text="${responseSignatureBase64}"/>
+                <h4 th:if="${responseBase64 != null}"><strong>responseSignatureAlgorithm:</strong></h4>
+                <pre th:if="${responseBase64 != null}" th:text="${responseSignatureAlgorithm}"/>
+                <h4 th:if="${responseBase64 != null}"><strong>responseBase64:</strong></h4>
+                <pre th:if="${responseBase64 != null}" th:text="${responseBase64}"/>
+                <h4 th:if="${responseBase64 != null}"><strong>decodedResponseBase64:</strong></h4>
+                <pre th:if="${responseBase64 != null}" th:text="${decodedResponseBase64}"/>
+                <h4 th:if="${responseBase64 != null}"><strong>validSignature:</strong></h4>
+                <pre th:if="${responseBase64 != null}" th:text="${validSignature}"/>
+            </div>
+        </td>
+    </div>
+    <div class="row">
         <div class="col-12">
-            <h4><strong>responseSignatureBase64:</strong></h4>
-            <pre th:text="${responseSignatureBase64}"/>
-            <h4><strong>responseSignatureAlgorithm:</strong></h4>
-            <pre th:text="${responseSignatureAlgorithm}"/>
-            <h4><strong>responseBase64:</strong></h4>
-            <pre th:text="${responseBase64}"/>
-            <h4><strong>decodedResponseBase64:</strong></h4>
-            <pre th:text="${decodedResponseBase64}"/>
-            <h4><strong>validSignature:</strong></h4>
-            <pre th:text="${validSignature}"/>
+            <a href="index.html">back</a>
         </div>
     </div>
 </div>

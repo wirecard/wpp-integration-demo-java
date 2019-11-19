@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wirecard Payment Page Integration Demo</title>
+
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type=text/javascript src="static/js/integration.js"></script>
+<script type=text/javascript src="https://wpp-test.wirecard.com/loader/paymentPage.js"></script>
+
+
+<body>
+
+<div class="container">
+    <h1 class="text-center">Wirecard Payment Page Integration Demo - <br>
+        Embedded Credit Card and Alternative Payment Methods</h1>
+
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+
+        <div class="panel-heading">
+            Select one of the two variants to get transaction data.
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-4 col-xs-12">
+                    <form action="/find" method="post">
+                        <div class="form-group">
+                            <label for="transactionID">Use the transaction id to get a transaction</label>
+                            <input type="text"
+                                   name="tid"
+                                   class="form-control"
+                                   id="transactionID"
+                                   aria-describedby="transactionIDHelp" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id
+                            </small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <form action="/find" method="post">
+                        <div class="form-group">
+                            <label for="requestId">Use the request id to get a transaction</label>
+                            <input type="text"
+                                   name="rid" class="form-control"
+                                   id="requestId"
+                                   aria-describedby="requestIdHelp" placeholder="Enter request id">
+                            <small id="requestIdHelp" class="form-text text-muted">Define a request id
+                            </small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <a href="index.html">back</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

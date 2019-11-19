@@ -3,6 +3,7 @@ package com.wirecard.wpp.integration.demo.controllers;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,21 +26,21 @@ public class RedirectController {
     @Value("${ee.secretkey}")
     private String merchantSecretKey;
 
-    @RequestMapping(value = SUCCESS, method = RequestMethod.POST)
+    @RequestMapping(value = SUCCESS, method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView success(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
-                .addObject("msg", "Transaction was success")
+                .addObject("msg", "Transaction was successful")
                 .addObject("status", "Success");
     }
 
-    @RequestMapping(value = FAIL, method = RequestMethod.POST)
+    @RequestMapping(value = FAIL, method = {RequestMethod.GET, RequestMethod.POST})
     private ModelAndView fail(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
                 .addObject("msg", "Transaction failed")
                 .addObject("status", "Fail");
     }
 
-    @RequestMapping(value = CANCEL, method = RequestMethod.POST)
+    @RequestMapping(value = CANCEL, method = {RequestMethod.GET, RequestMethod.POST})
     private ModelAndView cancel(HttpServletRequest request) throws Exception {
         return this.prepareDataForView(request)
                 .addObject("msg", "Transaction was canceled")
@@ -47,14 +48,15 @@ public class RedirectController {
     }
 
     private ModelAndView prepareDataForView(HttpServletRequest request) throws Exception {
-        JSONObject jsonObject = new JSONObject(this.decode(request.getParameter("response-base64")));
+        String data = request.getParameter("response-base64");
+        JSONObject jsonObject = new JSONObject(StringUtils.isEmpty(data) ? "{}" : this.decode(data));
         return new ModelAndView("result")
                 .addObject("responseSignatureBase64", request.getParameter("response-signature-base64"))
                 .addObject("responseSignatureAlgorithm", request.getParameter("response-signature-algorithm"))
                 .addObject("responseBase64", request.getParameter("response-base64"))
                 .addObject("decodedResponseBase64", jsonObject.toString(2))
                 .addObject("validSignature",
-                        this.isValidSignature(request.getParameter("response-base64"),
+                        this.isValidSignature(data,
                                 request.getParameter("response-signature-base64"),
                                 request.getParameter("response-signature-algorithm")));
     }
@@ -66,6 +68,9 @@ public class RedirectController {
     }
 
     private boolean isValidSignature(String responseBase64, String responseBase64Signature, String responseSignatureAlgorithm) throws Exception {
+        if (StringUtils.isEmpty(responseBase64)) {
+            return false;
+        }
         Mac mac = Mac.getInstance(responseSignatureAlgorithm);
         mac.init(new SecretKeySpec(merchantSecretKey.getBytes("UTF-8"), responseSignatureAlgorithm));
         return responseBase64Signature != null && responseBase64Signature

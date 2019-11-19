@@ -4,36 +4,103 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>frontend</title>
+
+    <title>Wirecard Payment Page Integration Demo</title>
+
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
+
 <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type=text/javascript src="static/js/integration.js"></script>
-<script type=text/javascript src="https://wpp-test.wirecard.com/loader/paymentPage.js"></script>
 
+<body>
 
 <div class="container">
 
-    <div class="row" style="text-align:center; margin-top: 10px">
-        <div class="col-12">
-            <button type="button" class="col-4 btn btn-primary" onclick="clientApi.pay('wpp-embedded')">EMBEDDED WPP</button>
-            <button type="button" class="col-4 btn btn-primary" onclick="clientApi.pay('wpp-standalone')">STANDALONE WPP</button>
-            <button type="button" class="col-4 btn btn-primary" onclick="clientApi.pay('wpp-seamless-render')">SEAMLESS RENDER WPP</button>
+    <h1 class="text-center">Wirecard Payment Page Integration Demo</h1>
+
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+
+        <div class="panel-heading">
+            Choose your type of integration and start an example payment.
         </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-4 col-xs-12">
+                    <div style="padding: 0.5em 2.5em;" class="text-center">
+                        <h2>Standalone</h2>
+                        <img src="static/images/hosted.png"/>
+                        <p style="margin: 1em 0;">
+                            A standalone payment page hosted independently of your checkout page.
+                        </p>
+                        <div style="padding: 1em 3em;">
+                            <a class="btn btn-primary center-block text-center" role="button"
+                               style="display: inline; padding: 0.55em;" href="standalone.html">Overview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div style="padding: 0.5em 2.5em;" class="text-center">
+                        <h2>Embedded</h2>
+                        <img src="static/images/embedded.png" alt="embedded payment page" class="center-block"/>
+                        <p style="margin: 1em 0;">
+                            A payment form rendered over your checkout page as a model window.
+                        </p>
+                        <div style="padding: 1em 3em;">
+                            <a class="btn btn-primary center-block text-center" role="button"
+                               style="display: inline; padding: 0.55em;" href="embedded.html">Overview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div style="padding: 0.5em 2.5em;" class="text-center">
+                        <h2>Seamless</h2>
+                        <img src="static/images/seamless.png" alt="seamless payment page" class="text-center"/>
+                        <p style="margin: 1em 0;">
+                            A card form seamlessly <br> integrated into your checkout page.
+                        </p>
+                        <div style="padding: 1em 3em;">
+                            <a class="btn btn-primary center-block text-center"
+                               role="button"
+                               href="seamless.html"
+                               style="display: inline; padding: 0.55em;">Register
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div style="padding: 0.5em 2.5em;" class="text-center">
+                        <h2>Transactions</h2>
+                        <p style="margin: 1em 0;">
+                            Find a payment by its transaction id or request id.
+                        </p>
+                        <div style="padding: 1em 3em;">
+                            <a class="btn btn-primary center-block text-center" role="button"
+                               style="display: inline; padding: 0.55em;" href="find.html">Find Transactions
+                            </a>
+                        </div>
+                    </div>
+
+
+            </div>
+
+
+        </div>
+
     </div>
 
-    <div style="height: 100vh; text-align:center">
-        <div id="seamless-form-target" style="height: 50%"/>
-    </div>
-    <div class="col-4 text-center">
-        <button id="submit" style="display: none" type="button" class=" btn btn-primary"
-                onclick="clientApi.pay('wpp-seamless-submit')">SEAMLESS SUBMIT WPP
-        </button>
-    </div>
 </div>
 
 
 </body>
+
 </html>

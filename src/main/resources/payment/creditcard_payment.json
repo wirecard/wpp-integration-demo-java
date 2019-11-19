@@ -1,0 +1,42 @@
+{
+  "payment":{
+    "merchant-account-id":{
+      "value": ""
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Doe"
+    },
+    "request-id": "",
+    "transaction-type":"auto-sale",
+    "requested-amount":{
+      "value":10,
+      "currency":"EUR"
+    },
+    "payment-methods":{
+      "payment-method":[
+        {
+          "name": "creditcard"
+        }
+      ]
+    },
+    "three-d": {
+      "attempt-three-d": "true"
+    },
+    "success-redirect-url": "http://localhost:8080/success",
+    "fail-redirect-url": "http://localhost:8080/fail",
+    "cancel-redirect-url": "http://localhost:8080/cancel",
+    "notifications": {
+      "format": "application/json",
+      "notification": [
+        {
+          "transaction-state": "success",
+          "url": "http://your.domain.com/notifications"
+        }
+      ]
+    }
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}
