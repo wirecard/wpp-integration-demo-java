@@ -12,9 +12,9 @@
     "payment-methods":{
       "payment-method":[]
     },
-    "success-redirect-url": "http://localhost:8080/success",
-    "fail-redirect-url": "http://localhost:8080/fail",
-    "cancel-redirect-url": "http://localhost:8080/cancel"
+    "success-redirect-url": "https://demoshop-test.wirecard.com/demoshop/#/success",
+    "fail-redirect-url": "https://demoshop-test.wirecard.com/demoshop/#/error",
+    "cancel-redirect-url": "https://demoshop-test.wirecard.com/demoshop/#/cancel"
   },
   "options": {
     "frame-ancestor": ""
